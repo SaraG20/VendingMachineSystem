@@ -1,0 +1,11 @@
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\bin\Debug\net8.0\VendingMachineSystem.Domain.deps.json
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\bin\Debug\net8.0\VendingMachineSystem.Domain.dll
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\bin\Debug\net8.0\VendingMachineSystem.Domain.pdb
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\obj\Debug\net8.0\VendingMachineSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\obj\Debug\net8.0\VendingMachineSystem.Domain.AssemblyInfoInputs.cache
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\obj\Debug\net8.0\VendingMachineSystem.Domain.AssemblyInfo.cs
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\obj\Debug\net8.0\VendingMachineSystem.Domain.csproj.CoreCompileInputs.cache
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\obj\Debug\net8.0\VendingMachineSystem.Domain.dll
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\obj\Debug\net8.0\refint\VendingMachineSystem.Domain.dll
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\obj\Debug\net8.0\VendingMachineSystem.Domain.pdb
+C:\Users\saram\source\repos\VendingMachineSystem\VendingMachineSystem.Domain\obj\Debug\net8.0\ref\VendingMachineSystem.Domain.dll

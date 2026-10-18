@@ -1,0 +1,6 @@
+@VendingMachineSystem.Api_HostAddress = http://localhost:5249
+
+GET {{VendingMachineSystem.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

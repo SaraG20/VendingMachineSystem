@@ -1,0 +1,122 @@
+[
+  {
+    "ContainingType": "VendingMachineSystem.Api.Controllers.VendingMachinesController",
+    "Method": "CreateMachine",
+    "RelativePath": "api/vending-machines",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CreateVendingMachineRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VendingMachineSystem.Api.Controllers.VendingMachinesController",
+    "Method": "GetAllMachines",
+    "RelativePath": "api/vending-machines",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[VendingMachineSystem.Api.DTOs.VendingMachineResponse, VendingMachineSystem.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "VendingMachineSystem.Api.Controllers.VendingMachinesController",
+    "Method": "GetMachineById",
+    "RelativePath": "api/vending-machines/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VendingMachineSystem.Api.Controllers.VendingMachinesController",
+    "Method": "AddShelf",
+    "RelativePath": "api/vending-machines/{id}/shelves",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "VendingMachineSystem.Api.DTOs.AddShelfRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VendingMachineSystem.Api.Controllers.VendingMachinesController",
+    "Method": "Dispense",
+    "RelativePath": "api/vending-machines/{id}/shelves/{shelfId}/dispense",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "shelfId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VendingMachineSystem.Api.Controllers.VendingMachinesController",
+    "Method": "LoadInventory",
+    "RelativePath": "api/vending-machines/{id}/shelves/{shelfId}/inventory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "shelfId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "VendingMachineSystem.Api.DTOs.LoadInventoryRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

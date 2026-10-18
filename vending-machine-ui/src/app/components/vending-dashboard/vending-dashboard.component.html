@@ -1,0 +1,138 @@
+<div class="dashboard-container">
+  <mat-toolbar color="primary" class="main-toolbar">
+    <span>מערכת לניהול מכונות שתייה - Vending Machine System</span>
+  </mat-toolbar>
+
+  <!-- אזור יצירה וחיפוש -->
+  <div class="content-grid">
+    <mat-card class="section-card">
+      <mat-card-header>
+        <mat-card-title>הוספת מכונה חדשה</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-field-group">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>שם מכונה</mat-label>
+            <input matInput [(ngModel)]="newMachineName" placeholder="לדוגמה: מכונה קומה 1">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>מיקום</mat-label>
+            <input matInput [(ngModel)]="newMachineLocation" placeholder="לדוגמה: בניין A">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>כמות מדפים מקסימלית</mat-label>
+            <input matInput type="number" [(ngModel)]="newMachineMaxShelves">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="createMachine()">צור מכונה</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="section-card">
+      <mat-card-header>
+        <mat-card-title>חיפוש מכונה לפי מזהה (ID)</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="search-box">
+          <mat-form-field appearance="fill" class="search-input">
+            <mat-label>הכנס Machine ID (GUID)</mat-label>
+            <input matInput [(ngModel)]="searchId">
+          </mat-form-field>
+          <button mat-raised-button color="accent" (click)="searchMachine()">חפש</button>
+        </div>
+        <p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- 1. תוצאת החיפוש / המכונה הנבחרת מופיעה עכשיו ראשונה בול מתחת לחיפוש -->
+  <mat-card *ngIf="currentMachine" class="machine-details-card" style="margin-top: 20px;">
+    <mat-card-header>
+      <mat-card-title>פרטי מכונה: {{ currentMachine.name }}</mat-card-title>
+      <mat-card-subtitle>מיקום: {{ currentMachine.location || 'לא צוין' }} | מזהה: {{ currentMachine.id }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p><strong>מקסימום מדפים במכונה:</strong> {{ currentMachine.maxShelves }}</p>
+
+      <mat-divider class="divider"></mat-divider>
+
+      <h3>הוספת מדף חדש</h3>
+      <div class="shelf-form">
+        <mat-form-field appearance="fill">
+          <mat-label>סוג מוצר</mat-label>
+          <mat-select [(ngModel)]="shelfProductType">
+            <mat-option [value]="1">בקבוק</mat-option>
+            <mat-option [value]="2">חטיף</mat-option>
+            <mat-option [value]="3">פחית</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>קיבולת מדף</mat-label>
+          <input matInput type="number" [(ngModel)]="shelfMaxCapacity">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="addShelf(currentMachine.id)">הוסף מדף</button>
+      </div>
+
+      <mat-divider class="divider"></mat-divider>
+
+      <h3>רשימת מדפים פעילים</h3>
+      <div *ngIf="!currentMachine.shelves || currentMachine.shelves.length === 0">
+        <p>עדיין לא הוגדרו מדפים במכונה זו.</p>
+      </div>
+
+      <div *ngFor="let shelf of currentMachine.shelves" class="shelf-card">
+        <div class="shelf-info">
+          <span><strong>קוד מדף:</strong> {{ shelf.id }}</span>
+          <span><strong>סוג מוצר:</strong> {{ shelf.productType }}</span>
+          <span><strong>מלאי:</strong> {{ shelf.currentQuantity }} / {{ shelf.maxCapacity }}</span>
+        </div>
+
+        <div class="shelf-actions">
+          <mat-form-field appearance="fill" class="qty-input">
+            <mat-label>כמות למילוי</mat-label>
+            <input matInput type="number" [(ngModel)]="inventoryQuantity">
+          </mat-form-field>
+
+<button mat-stroked-button color="primary" (click)="loadInventory(currentMachine.id, shelf.id, shelf.productType, inventoryQuantity)">
+  טען מלאי
+</button>
+          
+          <button mat-raised-button color="warn" (click)="dispense(currentMachine.id, shelf.id)">
+            רכישת מוצר
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- 2. רשימת כל המכונות הועברה למטה -->
+  <mat-card class="section-card" style="margin-top: 20px; width: 100%;">
+    <mat-card-header>
+      <mat-card-title>רשימת כל המכונות במערכת</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <button mat-raised-button color="primary" (click)="loadAllMachines()" style="margin-bottom: 15px;">
+        הצג / רענן את כל המכונות
+      </button>
+
+      <div *ngIf="allMachines.length > 0" class="machines-grid" style="display: flex; flex-direction: column; gap: 10px;">
+        <mat-card *ngFor="let m of allMachines" style="padding: 12px; background: #f9f9f9; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <p><strong>שם:</strong> {{ m.name }}</p>
+          <p><strong>מיקום:</strong> {{ m.location || 'לא צוין' }}</p>
+          <p><strong>מזהה (ID):</strong> {{ m.id }}</p>
+          <button mat-button color="accent" (click)="searchId = m.id; searchMachine()">בחר מכונה זו</button>
+        </mat-card>
+      </div>
+
+      <p *ngIf="allMachines.length === 0" style="color: gray; margin-top: 10px;">אין מכונות להצגה כרגע (לחץ על הכפתור למעלה לטעינה).</p>
+    </mat-card-content>
+  </mat-card>
+
+</div>

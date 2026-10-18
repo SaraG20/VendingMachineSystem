@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "5y/goUqNZOAvcHSt8sYKgq2BF8uDum7BUecwTC5Xi74=",
+  "Source": "VendingMachineSystem.Api",
+  "BasePath": "_content/VendingMachineSystem.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

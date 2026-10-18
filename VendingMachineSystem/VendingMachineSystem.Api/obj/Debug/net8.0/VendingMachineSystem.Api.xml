@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VendingMachineSystem.Api</name>
+    </assembly>
+    <members>
+        <member name="M:VendingMachineSystem.Api.Controllers.VendingMachinesController.CreateMachine(CreateVendingMachineRequest)">
+            <summary>
+            Create new vending machine
+            </summary>
+        </member>
+        <member name="M:VendingMachineSystem.Api.Controllers.VendingMachinesController.GetMachineById(System.Guid)">
+            <summary>
+            Get vending machine by ID
+            </summary>
+        </member>
+        <member name="M:VendingMachineSystem.Api.Controllers.VendingMachinesController.AddShelf(System.Guid,VendingMachineSystem.Api.DTOs.AddShelfRequest)">
+            <summary>
+            Add shelf to vending machine
+            </summary>
+        </member>
+        <member name="M:VendingMachineSystem.Api.Controllers.VendingMachinesController.LoadInventory(System.Guid,System.Guid,VendingMachineSystem.Api.DTOs.LoadInventoryRequest)">
+            <summary>
+            Load inventory to shelf
+            </summary>
+        </member>
+        <member name="M:VendingMachineSystem.Api.Controllers.VendingMachinesController.Dispense(System.Guid,System.Guid)">
+            <summary>
+            Dispense product from shelf
+            </summary>
+        </member>
+        <member name="M:VendingMachineSystem.Api.Controllers.VendingMachinesController.GetAllMachines">
+            <summary>
+            Get all vending machines
+            </summary>
+        </member>
+    </members>
+</doc>
